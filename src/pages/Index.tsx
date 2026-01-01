@@ -6,6 +6,8 @@ import MetricsSection from '@/components/MetricsSection';
 import EditorialSection from '@/components/EditorialSection';
 import AwardsSection from '@/components/AwardsSection';
 import ContactSection from '@/components/ContactSection';
+import LatestBlogSection from '@/components/LatestBlogSection';
+
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 
@@ -22,6 +24,7 @@ const Index = () => {
           <MetricsSection />
           <EditorialSection />
           <AwardsSection />
+          <LatestBlogSection />
           <ContactSection />
         </main>
         <Footer />

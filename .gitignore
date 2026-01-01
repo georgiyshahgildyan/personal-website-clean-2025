@@ -29,3 +29,6 @@ dist/
 temp_extract/
 *.zip
 *.bib
+
+# Local Netlify folder
+.netlify
