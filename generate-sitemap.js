@@ -6,8 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DOMAIN = 'https://shakhgildyan.com';
-const BLOG_DIR = path.join(__dirname, '../src/content/blog');
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const BLOG_DIR = path.join(__dirname, 'src/content/blog');
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
 // Static routes
 const routes = [
