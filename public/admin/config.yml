@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: main # Ensure this matches your production branch
 
-local_backend: true # Allows testing CMS locally
-
 publish_mode: editorial_workflow
 
 media_folder: "public/images/blog"
