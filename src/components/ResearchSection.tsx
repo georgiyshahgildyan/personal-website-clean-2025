@@ -4,9 +4,10 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
+  DialogClose
 } from '@/components/ui/dialog';
-import { Layers, Zap, Binary, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Layers, Zap, Binary, CheckCircle2, ChevronRight, X } from 'lucide-react';
 
 const researchAreas = [
   {
@@ -96,6 +97,11 @@ const ResearchSection = () => {
                     />
                     <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
                     <div className="absolute inset-0 bg-gradient-to-r from-background/0 via-background/0 to-background/10 lg:to-background/20" />
+
+                    {/* Floating Close Button for Mobile/Desktop */}
+                    <DialogClose className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors border border-white/20">
+                      <X size={20} />
+                    </DialogClose>
                   </div>
 
                   {/* Content Side */}
