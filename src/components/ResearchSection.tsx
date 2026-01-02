@@ -87,14 +87,14 @@ const ResearchSection = () => {
               </DialogTrigger>
 
               <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl relative max-h-[85vh] overflow-y-auto overflow-x-hidden">
-                {/* Global Close Button */}
-                <DialogClose className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors border border-white/20 sticky float-right">
+                {/* Global Close Button - Fixed relative to viewport on mobile to ensure visibility */}
+                <DialogClose className="fixed top-4 right-4 z-[100] p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors border border-white/20 shadow-2xl">
                   <X size={24} />
                 </DialogClose>
 
                 <div className="grid lg:grid-cols-2">
-                  {/* Image Side */}
-                  <div className="relative h-48 sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden shrink-0">
+                  {/* Image Side - Hidden on small mobile, visible on sm+ */}
+                  <div className="hidden sm:block relative sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden shrink-0">
                     <img
                       src={area.image}
                       alt={area.title}
