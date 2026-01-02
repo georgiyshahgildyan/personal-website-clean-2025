@@ -86,10 +86,15 @@ const ResearchSection = () => {
                 </div>
               </DialogTrigger>
 
-              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 overflow-hidden rounded-3xl">
+              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl relative max-h-[85vh] overflow-y-auto overflow-x-hidden">
+                {/* Global Close Button */}
+                <DialogClose className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors border border-white/20 sticky float-right">
+                  <X size={24} />
+                </DialogClose>
+
                 <div className="grid lg:grid-cols-2">
                   {/* Image Side */}
-                  <div className="relative h-64 lg:h-full min-h-[400px] overflow-hidden">
+                  <div className="relative h-48 sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden shrink-0">
                     <img
                       src={area.image}
                       alt={area.title}
@@ -97,11 +102,6 @@ const ResearchSection = () => {
                     />
                     <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
                     <div className="absolute inset-0 bg-gradient-to-r from-background/0 via-background/0 to-background/10 lg:to-background/20" />
-
-                    {/* Floating Close Button for Mobile/Desktop */}
-                    <DialogClose className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors border border-white/20">
-                      <X size={20} />
-                    </DialogClose>
                   </div>
 
                   {/* Content Side */}
