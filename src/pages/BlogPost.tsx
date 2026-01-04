@@ -3,30 +3,43 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { getPostBySlug, BlogPost } from '@/lib/blog';
-import { Calendar, Tag, ArrowLeft, Clock } from 'lucide-react';
+import { getPostBySlug, getAdjacentPosts, BlogPost } from '@/lib/blog';
+import { Calendar, Tag, ArrowLeft, ArrowRight, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const BlogPostPage = () => {
     const { slug } = useParams();
     const [post, setPost] = useState<BlogPost | null>(null);
+    const [adjacent, setAdjacent] = useState<{ prev: BlogPost | null, next: BlogPost | null }>({ prev: null, next: null });
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchPost = async () => {
+        const fetchPostData = async () => {
             if (slug) {
+                setLoading(true);
                 const data = await getPostBySlug(slug);
+                const adj = await getAdjacentPosts(slug);
                 setPost(data || null);
+                setAdjacent(adj);
+                setLoading(false);
+                if (data) {
+                    document.title = `${data.title} | Blog | Dr. Georgiy Shakhgildyan`;
+                }
+                // Scroll to top when post changes
+                window.scrollTo(0, 0);
             }
-            setLoading(false);
         };
-        fetchPost();
+        fetchPostData();
     }, [slug]);
 
     if (loading) {
         return (
             <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-                Loading...
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                    <p className="text-foreground/50 animate-pulse">Loading article...</p>
+                </div>
             </div>
         );
     }
@@ -51,13 +64,13 @@ const BlogPostPage = () => {
             <Header />
 
             <main className="flex-1 pt-24 pb-20">
-                <article className="max-w-3xl mx-auto px-6">
+                <article className="max-w-3xl mx-auto px-6 font-sans">
                     {/* Back Link */}
                     <Link
                         to="/blog"
-                        className="inline-flex items-center gap-2 text-foreground/50 hover:text-primary transition-colors mb-8 text-sm"
+                        className="inline-flex items-center gap-2 text-foreground/50 hover:text-primary transition-colors mb-8 text-sm group"
                     >
-                        <ArrowLeft size={16} /> Back to Blog
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> Back to Blog
                     </Link>
 
                     {/* Header */}
@@ -97,19 +110,54 @@ const BlogPostPage = () => {
 
                     {/* Content */}
                     <div className="prose prose-invert prose-lg max-w-none 
-            prose-headings:font-serif prose-headings:font-bold prose-headings:text-foreground
-            prose-p:text-foreground/80 prose-p:leading-relaxed
-            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-foreground prose-strong:font-semibold
-            prose-li:text-foreground/80
-            prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-          ">
+                        prose-headings:font-serif prose-headings:font-bold prose-headings:text-foreground
+                        prose-p:text-foreground/80 prose-p:leading-relaxed
+                        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+                        prose-strong:text-foreground prose-strong:font-semibold
+                        prose-li:text-foreground/80
+                        prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
+                        mb-20
+                    ">
                         <ReactMarkdown>{post.content}</ReactMarkdown>
+                    </div>
+
+                    {/* Navigation */}
+                    <div className="border-t border-white/10 pt-12 mt-12 mb-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {adjacent.next ? (
+                                <Link
+                                    to={`/blog/${adjacent.next.slug}`}
+                                    className="glass-card p-6 group hover:border-primary/50 transition-all text-left flex flex-col gap-2"
+                                >
+                                    <span className="text-xs font-semibold text-primary/60 uppercase tracking-widest flex items-center gap-2">
+                                        <ArrowLeft size={12} /> Next Article
+                                    </span>
+                                    <span className="text-foreground font-bold font-serif line-clamp-2 group-hover:text-primary transition-colors">
+                                        {adjacent.next.title}
+                                    </span>
+                                </Link>
+                            ) : <div></div>}
+
+                            {adjacent.prev ? (
+                                <Link
+                                    to={`/blog/${adjacent.prev.slug}`}
+                                    className="glass-card p-6 group hover:border-primary/50 transition-all text-right flex flex-col items-end gap-2"
+                                >
+                                    <span className="text-xs font-semibold text-primary/60 uppercase tracking-widest flex items-center gap-2">
+                                        Previous Article <ArrowRight size={12} />
+                                    </span>
+                                    <span className="text-foreground font-bold font-serif line-clamp-2 group-hover:text-primary transition-colors">
+                                        {adjacent.prev.title}
+                                    </span>
+                                </Link>
+                            ) : <div></div>}
+                        </div>
                     </div>
                 </article>
             </main>
 
             <Footer />
+            <ScrollToTop />
         </div>
     );
 };

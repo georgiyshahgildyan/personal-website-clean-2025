@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { FileText, ExternalLink, ArrowRight } from 'lucide-react';
+import { FileText, ExternalLink, ArrowRight, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
@@ -75,14 +75,10 @@ const HeroSection = () => {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="gap-2 btn-glass text-foreground rounded-2xl px-8">
-                <a
-                  href="https://scholar.google.ru/citations?user=lKMw96wAAAAJ&hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink size={20} />
-                  Google Scholar
-                </a>
+                <Link to="/cv">
+                  <GraduationCap size={20} />
+                  View CV
+                </Link>
               </Button>
             </div>
           </div>

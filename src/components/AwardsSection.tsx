@@ -11,10 +11,10 @@ const AwardsSection = () => {
                     Recognition for research excellence and grant-funded projects
                 </p>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
                     {/* Left Column: Awards & Expert Roles */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
+                    <div className="space-y-6 flex flex-col h-full">
+                        <h3 className="text-xl font-bold text-foreground flex items-center gap-3">
                             <Trophy className="text-primary" size={24} />
                             Awards & Recognition
                         </h3>
@@ -33,8 +33,8 @@ const AwardsSection = () => {
                             </div>
                         </div>
 
-                        <div className="space-y-4 pt-4">
-                            <div className="flex items-start gap-4 glass-card p-4 hover:bg-white/5 transition-colors">
+                        <div className="space-y-4 pt-2 flex-grow">
+                            <div className="flex items-start gap-4 glass-card p-6 hover:bg-white/5 transition-colors">
                                 <ShieldCheck className="text-primary shrink-0 mt-1" size={20} />
                                 <div>
                                     <div className="text-sm font-semibold text-foreground">Russian Science Foundation (RSF) Expert</div>
@@ -42,7 +42,7 @@ const AwardsSection = () => {
                                 </div>
                             </div>
 
-                            <div className="flex items-start gap-4 glass-card p-4 hover:bg-white/5 transition-colors">
+                            <div className="flex items-start gap-4 glass-card p-6 hover:bg-white/5 transition-colors">
                                 <ShieldCheck className="text-primary shrink-0 mt-1" size={20} />
                                 <div>
                                     <div className="text-sm font-semibold text-foreground">"Priority-2030" Academic Leadership Program Expert</div>
@@ -53,8 +53,8 @@ const AwardsSection = () => {
                     </div>
 
                     {/* Right Column: Funding & Grants */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
+                    <div className="space-y-6 h-full">
+                        <h3 className="text-xl font-bold text-foreground flex items-center gap-3">
                             <Briefcase className="text-primary" size={24} />
                             Research Funding
                         </h3>

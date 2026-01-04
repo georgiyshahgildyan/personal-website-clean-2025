@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
 interface Publication {
     id: string;
@@ -35,6 +36,7 @@ const PublicationsPage = () => {
     const [metrics, setMetrics] = useState<AuthorMetrics | null>(null);
 
     useEffect(() => {
+        document.title = "Publications | Dr. Georgiy Shakhgildyan";
         const fetchAllData = async () => {
             setLoading(true);
             try {
@@ -262,6 +264,7 @@ const PublicationsPage = () => {
             </main>
 
             <Footer />
+            <ScrollToTop />
         </div>
     );
 };

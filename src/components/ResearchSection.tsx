@@ -7,6 +7,8 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 import { Layers, Zap, Binary, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const researchAreas = [
   {
@@ -85,10 +87,10 @@ const ResearchSection = () => {
                 </div>
               </DialogTrigger>
 
-              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 overflow-hidden rounded-3xl">
+              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl z-[60] max-h-[85vh] overflow-y-auto">
                 <div className="grid lg:grid-cols-2">
                   {/* Image Side */}
-                  <div className="relative h-64 lg:h-full min-h-[400px] overflow-hidden">
+                  <div className="relative h-48 sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden">
                     <img
                       src={area.image}
                       alt={area.title}
@@ -124,6 +126,15 @@ const ResearchSection = () => {
               </DialogContent>
             </Dialog>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Button asChild className="btn-primary rounded-2xl px-10 py-7 h-auto text-lg group">
+            <Link to="/projects" className="flex items-center gap-3">
+              Explore Research Projects
+              <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

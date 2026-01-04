@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node generate-sitemap.js && vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sync": "node sync-publications.js"
+    "sync": "node sync-publications.js",
+    "sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

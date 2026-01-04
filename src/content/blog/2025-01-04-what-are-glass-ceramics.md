@@ -2,7 +2,7 @@
 title: "What Are Glass-Ceramics?"
 date: "2025-01-04T12:00:00.000Z"
 description: "Combining the best of glass and crystals. Glass-ceramics (sitalls) are engineered materials with nanoscale crystals for superior strength and thermal stability."
-tags: ["Advanced Materials", "Glass-Ceramics"]
+tags: ["Glass-ceramics"]
 image: "/images/blog/glass_ceramics.png"
 ---
 

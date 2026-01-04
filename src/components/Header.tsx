@@ -3,13 +3,10 @@ import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'About', href: '/#about', isRoute: false },
-  { label: 'Research', href: '/#research', isRoute: false },
   { label: 'Publications', href: '/publications', isRoute: true },
+  { label: 'Projects', href: '/projects', isRoute: true },
   { label: 'Metrics', href: '/#metrics', isRoute: false },
   { label: 'Blog', href: '/blog', isRoute: true },
-  { label: 'Editorial', href: '/#editorial', isRoute: false },
-  { label: 'Awards', href: '/#awards', isRoute: false },
   { label: 'Contact', href: '/#contact', isRoute: false },
 ];
 

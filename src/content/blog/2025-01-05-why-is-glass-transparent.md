@@ -2,7 +2,7 @@
 title: "Why Is Glass Transparent?"
 date: "2025-01-05T15:00:00.000Z"
 description: "Transparency isn't accidental—it's quantum mechanics in action. Discover how atomic structure and electronic gaps allow light to pass through glass."
-tags: ["Physics", "Optics"]
+tags: ["Glass"]
 image: "/images/blog/transparency.png"
 ---
 

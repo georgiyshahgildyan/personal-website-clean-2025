@@ -2,7 +2,7 @@
 title: "What Is Glass?"
 date: "2025-01-03T10:00:00.000Z"
 description: "Glass is not just a solid material—it’s a frozen liquid with a disordered atomic structure. Learn why this unique state of matter is the foundation of modern photonics."
-tags: ["Science Basics", "Materials"]
+tags: ["Glass"]
 image: "/images/blog/what_is_glass.png"
 ---
 

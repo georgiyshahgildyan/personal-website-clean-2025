@@ -6,6 +6,7 @@ export interface BlogPost {
     content: string;
     tags: string[];
     image?: string;
+    draft?: boolean;
 }
 
 // Simple frontmatter parser to avoid nodejs dependencies in browser
@@ -74,6 +75,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
                     tags: Array.isArray(data.tags) ? data.tags : [],
                     image: data.image,
                     content: content,
+                    draft: data.draft === 'true' || data.draft === true,
                 });
             }
         } catch (e) {
@@ -81,12 +83,32 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         }
     }
 
-    // Sort by date desc
-    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    // Sort by date desc and filter out drafts
+    return posts
+        .filter(p => !p.draft)
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 // Get single post by slug
 export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
     const posts = await getAllPosts();
     return posts.find((p) => p.slug === slug);
+}
+
+// Get adjacent posts (next and previous)
+export async function getAdjacentPosts(slug: string): Promise<{ prev: BlogPost | null, next: BlogPost | null }> {
+    const posts = await getAllPosts();
+    const currentIndex = posts.findIndex(p => p.slug === slug);
+
+    if (currentIndex === -1) {
+        return { prev: null, next: null };
+    }
+
+    // Since posts are sorted by date desc:
+    // next (newer) post is at index - 1
+    // prev (older) post is at index + 1
+    return {
+        next: currentIndex > 0 ? posts[currentIndex - 1] : null,
+        prev: currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null
+    };
 }
