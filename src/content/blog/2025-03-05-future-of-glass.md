@@ -1,6 +1,6 @@
 ---
 title: "The Future of Glass Science: What’s Left to Discover?"
-date: 2026-01-04T15:58:00.000+03:00
+date: 2026-01-04T16:00:00.000+03:00
 description: Looking ahead to the next century of research in the world's most
   versatile material.
 image: /images/blog/gemini_generated_image_pjsf7mpjsf7mpjsf.png
