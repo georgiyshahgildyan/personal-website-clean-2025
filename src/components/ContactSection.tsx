@@ -6,33 +6,6 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const socialLinks = [
-    {
-      name: 'ResearchGate',
-      label: 'RG',
-      href: 'https://www.researchgate.net/profile/Georgiy-Shakhgildyan',
-      isText: true
-    },
-    {
-      name: 'LinkedIn',
-      label: 'in',
-      href: 'https://www.linkedin.com/in/shakhgildyan/',
-      isText: true
-    },
-    {
-      name: 'Telegram',
-      label: <Send size={24} />,
-      href: 'https://t.me/geo_shkh',
-      isText: false
-    },
-    {
-      name: 'Instagram',
-      label: <Instagram size={24} />,
-      href: 'https://www.instagram.com/georgiy.shakhgildyan?igsh=eDEzcDU1c25qYmxv&utm_source=qr',
-      isText: false
-    }
-  ];
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -74,66 +47,89 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Left Column - Contact Info */}
-          <div className="glass-card p-8 lg:p-12 flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-8 font-serif">Contact Information</h3>
+          <div className="glass-card p-8 lg:p-12 flex flex-col">
+            <h3 className="text-2xl font-bold text-foreground mb-8 font-serif">Contact Information</h3>
 
-              {/* Email */}
+            {/* Contact Methods - Prominent */}
+            <div className="space-y-4 mb-8">
               <a
                 href="mailto:shakhgildian.g.i@muctr.ru"
-                className="inline-flex items-center gap-3 text-lg font-medium text-foreground hover:text-primary transition-all duration-300 mb-8 group"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors group"
               >
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail size={20} className="text-primary" />
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center group-hover:bg-foreground/10 transition-all shrink-0">
+                  <Mail size={20} />
                 </div>
-                <span className="group-hover:tracking-wide transition-all">shakhgildian.g.i@muctr.ru</span>
+                <span className="text-base font-medium">shakhgildian.g.i@muctr.ru</span>
               </a>
 
-              {/* Location */}
-              <div className="flex gap-3 text-foreground/70 mb-8">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <MapPin size={20} className="text-primary" />
+              <a
+                href="https://www.researchgate.net/profile/Georgiy-Shakhgildyan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center group-hover:bg-foreground/10 transition-all shrink-0">
+                  <span className="font-bold text-sm">RG</span>
                 </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-semibold text-foreground">Mendeleev University of Chemical Technology</span>
-                  <span className="text-sm">Department of Glass and Glass-ceramics</span>
-                  <span className="text-sm">Moscow, Russia</span>
+                <span className="text-base font-medium">ResearchGate</span>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/shakhgildyan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center group-hover:bg-foreground/10 transition-all shrink-0">
+                  <span className="font-bold text-sm">in</span>
                 </div>
-              </div>
+                <span className="text-base font-medium">LinkedIn</span>
+              </a>
+
+              <a
+                href="https://t.me/geo_shkh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center group-hover:bg-foreground/10 transition-all shrink-0">
+                  <Send size={18} />
+                </div>
+                <span className="text-base font-medium">Telegram</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/georgiy.shakhgildyan?igsh=eDEzcDU1c25qYmxv&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-foreground/80 hover:text-primary transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-full glass-card flex items-center justify-center group-hover:bg-foreground/10 transition-all shrink-0">
+                  <Instagram size={20} />
+                </div>
+                <span className="text-base font-medium">Instagram</span>
+              </a>
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-8 opacity-30" />
+            <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8 opacity-30" />
 
-            {/* Social Links */}
-            <div>
-              <h4 className="text-sm font-semibold text-foreground/60 uppercase tracking-wider mb-4">Connect</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-14 h-14 rounded-full glass-card flex items-center justify-center hover:bg-foreground/10 transition-all duration-500 hover:scale-110 group border-2 border-transparent hover:border-primary/30"
-                    title={social.name}
-                  >
-                    {social.isText ? (
-                      <span className="text-lg font-bold text-foreground/60 group-hover:text-primary transition-colors">
-                        {social.label}
-                      </span>
-                    ) : (
-                      <div className="text-foreground/60 group-hover:text-primary transition-colors">
-                        {social.label}
-                      </div>
-                    )}
-                  </a>
-                ))}
+            {/* Address */}
+            <div className="flex gap-4 text-foreground/70 mb-6">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <MapPin size={20} className="text-primary" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <span className="font-semibold text-foreground">Mendeleev University of Chemical Technology</span>
+                <span className="text-sm">Department of Glass and Glass-ceramics</span>
+                <span className="text-sm">20 Geroyev Panfilovcev st., Moscow, Russia</span>
               </div>
             </div>
 
             {/* Response Time Note */}
-            <div className="text-sm text-foreground/60 italic mt-8">
+            <div className="text-sm text-foreground/60 italic mt-auto">
               Feel free to reach out for collaborations or research inquiries.<br />I typically respond within 1-2 business days.
             </div>
           </div>
