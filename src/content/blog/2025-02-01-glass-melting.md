@@ -1,6 +1,6 @@
 ---
 title: "Glass Melting: A High-Temperature Dance"
-date: 2025-02-01
+date: 2026-01-04T15:56:00.000+03:00
 description: Exploring the fundamental process of glass formation through
   melting and rapid cooling.
 image: /images/blog/what-is-glass.png
