@@ -4,9 +4,10 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
+  DialogClose
 } from '@/components/ui/dialog';
-import { Layers, Zap, Binary, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Layers, Zap, Binary, CheckCircle2, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -87,10 +88,15 @@ const ResearchSection = () => {
                 </div>
               </DialogTrigger>
 
-              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl z-[60] max-h-[85vh] overflow-y-auto">
+              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl relative max-h-[85vh] overflow-y-auto overflow-x-hidden z-[60]">
+                {/* Global Close Button - Fixed relative to viewport on mobile to ensure visibility */}
+                <DialogClose className="fixed top-4 right-4 z-[100] p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors border border-white/20 shadow-2xl">
+                  <X size={24} />
+                </DialogClose>
+
                 <div className="grid lg:grid-cols-2">
-                  {/* Image Side */}
-                  <div className="relative h-48 sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden">
+                  {/* Image Side - Hidden on small mobile, visible on sm+ */}
+                  <div className="hidden sm:block relative sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden shrink-0">
                     <img
                       src={area.image}
                       alt={area.title}
@@ -129,7 +135,7 @@ const ResearchSection = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <Button asChild className="btn-primary rounded-2xl px-10 py-7 h-auto text-lg group">
+          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl px-10 py-7 h-auto text-lg group">
             <Link to="/projects" className="flex items-center gap-3">
               Explore Research Projects
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
