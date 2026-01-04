@@ -88,44 +88,41 @@ const ResearchSection = () => {
                 </div>
               </DialogTrigger>
 
-              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl relative max-h-[85vh] overflow-y-auto overflow-x-hidden z-[60]">
-                {/* Global Close Button - Fixed relative to viewport on mobile to ensure visibility */}
-                <DialogClose className="fixed top-4 right-4 z-[100] p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors border border-white/20 shadow-2xl">
-                  <X size={24} />
-                </DialogClose>
+              <DialogContent className="max-w-4xl p-0 bg-background/95 backdrop-blur-2xl border-white/10 rounded-3xl max-h-[90vh] overflow-hidden flex flex-col">
+                <div className="overflow-y-auto w-full flex-1 scrollbar-none">
+                  <div className="grid lg:grid-cols-2">
+                    {/* Image Side - Visible on all devices, serves as header on mobile */}
+                    <div className="relative h-64 lg:h-full lg:min-h-[400px] overflow-hidden shrink-0">
+                      <img
+                        src={area.image}
+                        alt={area.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
+                      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background/0 via-background/0 to-background/50 lg:to-background/20" />
+                    </div>
 
-                <div className="grid lg:grid-cols-2">
-                  {/* Image Side - Hidden on small mobile, visible on sm+ */}
-                  <div className="hidden sm:block relative sm:h-64 lg:h-full lg:min-h-[400px] overflow-hidden shrink-0">
-                    <img
-                      src={area.image}
-                      alt={area.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-background/0 via-background/0 to-background/10 lg:to-background/20" />
-                  </div>
-
-                  {/* Content Side */}
-                  <div className="p-8 lg:p-12 space-y-8">
-                    <DialogHeader>
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">
-                        Key Achievements
-                      </div>
-                      <DialogTitle className="text-3xl lg:text-4xl font-bold font-serif text-foreground">
-                        {area.title}
-                      </DialogTitle>
-                    </DialogHeader>
-
-                    <div className="space-y-4">
-                      {area.achievements.map((achievement, i) => (
-                        <div key={i} className="flex gap-4">
-                          <CheckCircle2 className="text-primary shrink-0 mt-1" size={18} />
-                          <p className="text-foreground/80 text-sm lg:text-base leading-relaxed">
-                            {achievement}
-                          </p>
+                    {/* Content Side */}
+                    <div className="p-8 lg:p-12 space-y-8">
+                      <DialogHeader>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-4">
+                          Key Achievements
                         </div>
-                      ))}
+                        <DialogTitle className="text-3xl lg:text-4xl font-bold font-serif text-foreground">
+                          {area.title}
+                        </DialogTitle>
+                      </DialogHeader>
+
+                      <div className="space-y-4">
+                        {area.achievements.map((achievement, i) => (
+                          <div key={i} className="flex gap-4">
+                            <CheckCircle2 className="text-primary shrink-0 mt-1" size={18} />
+                            <p className="text-foreground/80 text-sm lg:text-base leading-relaxed">
+                              {achievement}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
